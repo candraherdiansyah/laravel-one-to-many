@@ -12,17 +12,5 @@
           </div>
         @endforeach
     </div>
-    <div class="row py-4">
-        <div class="card">
-            <div class="card-header">
-                Daftar Merk
-            </div>
-            <div class="card-body">
-                @foreach ($merk as $item)
-                    <a class="btn btn-info">{{$item->nama_merk}}</a>
-                @endforeach
-            </div>
-        </div>
-    </div>
 </div>
 @endsection

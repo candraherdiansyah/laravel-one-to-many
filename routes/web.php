@@ -1,10 +1,7 @@
 <?php
 
+use App\Http\Controllers\FrontController;
 use Illuminate\Support\Facades\Route;
-
-Route::get('/', function () {
-    return view('welcome');
-});
 
 // relasi 1 - one to one
 Route::get('relasi-1', function () {
@@ -68,6 +65,16 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::resource('produk', App\Http\Controllers\ProdukController::class)->middleware('auth');
-Route::post('produk/export-produk', [App\Http\Controllers\ProdukController::class, 'exportPdf'])->name('produk.export-pdf');
-Route::resource('merk', App\Http\Controllers\MerkController::class)->middleware('auth');
+// backend / route untuk crud
+Route::group(['prefix' => 'admin'], function () {
+    Route::resource('produk', App\Http\Controllers\ProdukController::class)->middleware('auth');
+    Route::post('produk/export-produk', [App\Http\Controllers\ProdukController::class, 'exportPdf'])->name('produk.export-pdf');
+    Route::resource('merk', App\Http\Controllers\MerkController::class)->middleware('auth');
+
+});
+
+// untuk halaman guest(pengunjung) / tamu
+Route::get('/', [FrontController::class, 'index']);
+Route::get('produk', [FrontController::class, 'produk']);
+Route::get('produk/{id}', [FrontController::class, 'detailProduk']);
+Route::get('about', [FrontController::class, 'about']);

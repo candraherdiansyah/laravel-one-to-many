@@ -37,6 +37,12 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
                         @guest
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url('produk') }}">Produk</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url('about') }}">About</a>
+                        </li>
                         @else
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('produk.index') }}">Produk</a>
