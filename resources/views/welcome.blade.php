@@ -19,7 +19,7 @@
             </div>
             <div class="card-body">
                 @foreach ($merk as $item)
-                    <a class="btn btn-info">{{$item->nama_merk}}</a>
+                <a href="{{ route('produk.filterByMerk', ['id' => $item->id]) }}" class="btn btn-info">{{ $item->nama_merk }}</a>
                 @endforeach
             </div>
         </div>

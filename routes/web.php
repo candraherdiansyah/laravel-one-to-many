@@ -78,3 +78,4 @@ Route::get('/', [FrontController::class, 'index']);
 Route::get('produk', [FrontController::class, 'produk']);
 Route::get('produk/{id}', [FrontController::class, 'detailProduk']);
 Route::get('about', [FrontController::class, 'about']);
+Route::get('/produk/merk/{id}', [FrontController::class, 'filterByMerk'])->name('produk.filterByMerk');

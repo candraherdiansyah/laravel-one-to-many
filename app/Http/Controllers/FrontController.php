@@ -31,4 +31,11 @@ class FrontController extends Controller
         $produk = Produk::findOrFail($id);
         return view('detail_produk', compact('produk'));
     }
+
+    public function filterByMerk($id)
+    {
+        $merk = Merk::all();
+        $produk = Produk::where('id_merk', $id)->latest()->get();
+        return view('produk', compact('produk', 'merk'));
+    }
 }
